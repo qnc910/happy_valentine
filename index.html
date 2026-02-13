@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Valentine ❤️</title>
+  <style>
+    :root{
+      --bg1:#120018;
+      --bg2:#240021;
+      --card: rgba(255,255,255,.08);
+      --stroke: rgba(255,255,255,.14);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.7);
+      --pink:#ff4d8d;
+      --rose:#ff2e63;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background: radial-gradient(1200px 600px at 20% 10%, #3a0036 0%, transparent 60%),
+                  radial-gradient(900px 500px at 80% 30%, #2a003d 0%, transparent 60%),
+                  linear-gradient(160deg, var(--bg1), var(--bg2));
+      min-height:100vh; overflow-x:hidden;
+    }
+    .wrap{max-width:980px; margin:0 auto; padding:28px 18px 60px}
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; padding:10px 14px; border:1px solid var(--stroke);
+      background: rgba(0,0,0,.18); border-radius:16px; backdrop-filter: blur(10px);
+      position:sticky; top:12px; z-index:10;
+    }
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700}
+    .brand .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, var(--pink), #ffd1e2);
+      box-shadow: 0 0 22px rgba(255,77,141,.6);
+    }
+    .nav a{color:var(--muted); text-decoration:none; font-size:14px}
+    .nav a:hover{color:var(--text)}
+
+    .hero{
+      margin-top:28px;
+      display:grid; grid-template-columns: 1.25fr .75fr; gap:18px;
+    }
+    @media (max-width: 860px){ .hero{grid-template-columns:1fr} }
+
+    .card{
+      border:1px solid var(--stroke);
+      background: var(--card);
+      border-radius:22px; padding:22px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.35);
+      backdrop-filter: blur(10px);
+    }
+
+    h1{margin:0 0 8px; font-size:42px; letter-spacing:-.5px}
+    .subtitle{color:var(--muted); line-height:1.7; margin:0 0 18px}
+
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:999px;
+      border:1px solid var(--stroke);
+      background: rgba(0,0,0,.16);
+      color:var(--muted); font-size:13px;
+    }
+
+    .btns{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    button{
+      border:1px solid transparent; cursor:pointer;
+      padding:11px 14px; border-radius:14px;
+      font-weight:650; font-size:14px;
+      transition: transform .08s ease, filter .2s ease, background .2s ease;
+      user-select:none;
+    }
+    button:active{transform: translateY(1px)}
+    .primary{
+      background: linear-gradient(135deg, var(--rose), var(--pink));
+      color:white; box-shadow: 0 14px 30px rgba(255,46,99,.25);
+    }
+    .ghost{
+      background: rgba(0,0,0,.18);
+      border-color: var(--stroke);
+      color: var(--text);
+    }
+    .yes{background: linear-gradient(135deg, #7bffb2, #3ee6ff); color:#0b1b12}
+    .no{position:relative}
+
+    .grid{
+      margin-top:18px;
+      display:grid; grid-template-columns: repeat(3, 1fr); gap:12px;
+    }
+    @media (max-width: 860px){ .grid{grid-template-columns:1fr} }
+    .mini{
+      padding:14px; border-radius:18px; border:1px solid var(--stroke);
+      background: rgba(0,0,0,.16);
+    }
+    .mini .k{font-size:12px; color:var(--muted)}
+    .mini .v{margin-top:4px; font-size:18px; font-weight:750}
+
+    .section{margin-top:18px}
+    .section h2{margin:0 0 10px; font-size:20px}
+
+    .letter{
+      display:none; margin-top:12px; padding:16px;
+      border-radius:18px; border:1px solid var(--stroke);
+      background: rgba(0,0,0,.14);
+      line-height:1.8;
+    }
+
+    .count{
+      font-variant-numeric: tabular-nums;
+      display:flex; gap:10px; justify-content:space-between;
+      margin-top:14px;
+    }
+    .timebox{
+      flex:1; text-align:center; padding:12px 10px;
+      border:1px solid var(--stroke); border-radius:16px;
+      background: rgba(0,0,0,.14);
+    }
+    .timebox .num{font-size:28px; font-weight:800}
+    .timebox .lbl{font-size:12px; color:var(--muted); margin-top:2px}
+
+    .ask{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      flex-wrap:wrap;
+    }
+    .ask .q{font-size:16px; color:var(--muted)}
+    .footer{
+      margin-top:22px; text-align:center; color:var(--muted); font-size:12px;
+    }
+
+    /* Gallery */
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+      margin-top:10px;
+    }
+    @media (max-width:860px){
+      .gallery{grid-template-columns:1fr}
+    }
+    .gallery img{
+      width:100%;
+      height:200px;
+      max-width:300px;
+      object-fit:cover;
+      border-radius:16px;
+      cursor:pointer;
+      transition: transform .3s ease, box-shadow .3s ease, filter .3s ease;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.12);
+    }
+    .gallery img:hover{
+      transform: scale(1.05);
+      box-shadow: 0 15px 35px rgba(0,0,0,.4);
+      filter: brightness(1.05);
+    }
+
+    /* Overlay zoom */
+    .overlay{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.82);
+      display:flex; align-items:center; justify-content:center;
+      z-index:9999;
+      padding:18px;
+    }
+    .overlay img{
+      max-width: min(980px, 92vw);
+      max-height: 88vh;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 30px 80px rgba(0,0,0,.55);
+    }
+    .overlay .hint{
+      position:fixed; bottom:14px; left:0; right:0;
+      text-align:center; color: rgba(255,255,255,.75);
+      font-size:12px;
+    }
+
+    /* Hearts */
+    .heart{
+      position:fixed; top:-40px; pointer-events:none; z-index:0;
+      width:18px; height:18px; transform: rotate(45deg);
+      background: rgba(255,77,141,.9);
+      filter: drop-shadow(0 8px 10px rgba(0,0,0,.25));
+      animation: fall linear forwards;
+    }
+    .heart:before, .heart:after{
+      content:""; position:absolute; width:18px; height:18px; border-radius:50%;
+      background: inherit;
+    }
+    .heart:before{left:-9px; top:0}
+    .heart:after{left:0; top:-9px}
+    @keyframes fall{
+      to { transform: translateY(110vh) rotate(45deg); opacity:0.05; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="nav">
+      <div class="brand"><span class="dot"></span> Valentine ❤️</div>
+      <div style="display:flex; gap:14px; align-items:center">
+        <a href="#letter">Thư</a>
+        <a href="#gallery">Ảnh</a>
+        <a href="#invite">Lời mời</a>
+        <a href="#countdown">Đếm ngược</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <!-- LEFT -->
+      <div class="card">
+        <div class="pill">💌 Một trang nhỏ dành tặng bé</div> 
+
+        <h1>Chúc bảo bối Valentine vui vẻ ❤️</h1>
+        <p class="subtitle">
+          Gửi <b id="toName">em bé</b> của anh — chúc bé một ngày Valentine thật ngọt ngào,
+          vui vẻ và luôn hạnh phúc bên những điều dễ thương nhất 💗
+        </p>
+
+        <div class="grid">
+          <div class="mini"><div class="k">Mong muốn</div><div class="v">Bé tăng cân</div></div>
+          <div class="mini"><div class="k">Kế hoạch</div><div class="v">Bóp đít ✨</div></div>
+        </div>
+
+        <div class="btns">
+          <button class="primary" id="openLetterBtn">Mở bức thư 💗</button>
+          <button class="ghost" id="toggleHeartsBtn">Bật/Tắt tim rơi</button>
+        </div>
+
+        <div class="section" id="letter">
+          <div class="letter" id="letterBox">
+            <b>Gửi bé iu,</b><br/>
+            Hôm nay là một ngày đặc biệt nên anh muốn gửi đến bé những lời chúc ngọt ngào nhất 💕<br/><br/>
+            Chúc bé có một ngày Valentine thật vui vẻ, cười nhiều hơn,
+            luôn xinh đẹp và dễ thương như bây giờ (còn béo thì hơn nữa 😘).<br/><br/>
+            Cảm ơn bé đã xuất hiện và làm mọi thứ trở nên ấm áp hơn.
+            Hy vọng chúng ta sẽ còn thật nhiều Valentine bên nhau nữa 💞<br/><br/>
+            Bé iu đừng mắng chửi anh nữa nhé 🥰<br/><br/>
+            <i>Yêu bé rất nhiều ❤️</i>
+          </div>
+        </div>
+
+        <!-- GALLERY -->
+        <div class="section" id="gallery">
+          <h2>Khoảnh khắc của chúng ta 📸</h2>
+          <p class="subtitle" style="margin:0 0 10px">
+            Bấm vào ảnh để phóng to.
+          </p>
+          <div class="gallery"></div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="card" id="countdown">
+        <h2 style="margin:0 0 6px">Đếm ngược đến Valentine</h2>
+        <div class="subtitle" style="margin:0 0 10px">
+          (Tự cập nhật theo năm hiện tại)
+        </div>
+
+        <div class="count">
+          <div class="timebox"><div class="num" id="d">0</div><div class="lbl">Ngày</div></div>
+          <div class="timebox"><div class="num" id="h">00</div><div class="lbl">Giờ</div></div>
+          <div class="timebox"><div class="num" id="m">00</div><div class="lbl">Phút</div></div>
+          <div class="timebox"><div class="num" id="s">00</div><div class="lbl">Giây</div></div>
+        </div>
+
+        <div class="section" id="invite">
+          <h2>Hẹ hẹ</h2>
+          <div class="ask">
+            <div class="q">Bé iu có iu anh không? 👉👈</div>
+            <div class="btns" style="margin:0">
+              <button class="yes" id="yesBtn">Có 💘</button>
+              <button class="ghost no" id="noBtn">Không 😶</button>
+            </div>
+          </div>
+          <div class="letter" id="answerBox"></div>
+        </div>
+
+        <div class="footer">Made with ❤️ — chúc bé iu Valentine vui vẻ!</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ====== Tùy chỉnh nhanh ======
+    const receiverName = "em bé"; // đổi tên nếu muốn
+    // Đếm ngược tới 14/02 năm hiện tại (giờ máy của bạn)
+    const now = new Date();
+    const target = new Date(now.getFullYear(), 1, 14, 0, 0, 0); // month: 0=Jan, 1=Feb
+    // ============================
+
+    document.getElementById("toName").textContent = receiverName;
+
+    // Toggle letter
+    const letterBox = document.getElementById("letterBox");
+    document.getElementById("openLetterBtn").addEventListener("click", () => {
+      letterBox.style.display = (letterBox.style.display === "block") ? "none" : "block";
+      letterBox.scrollIntoView({behavior:"smooth", block:"center"});
+    });
+
+    // Countdown
+    function pad(n){ return String(n).padStart(2, "0"); }
+    function tick(){
+      const t = target - new Date();
+      const total = Math.max(0, t);
+      const sec = Math.floor(total/1000);
+      const d = Math.floor(sec / 86400);
+      const h = Math.floor((sec % 86400) / 3600);
+      const m = Math.floor((sec % 3600) / 60);
+      const s = sec % 60;
+      document.getElementById("d").textContent = d;
+      document.getElementById("h").textContent = pad(h);
+      document.getElementById("m").textContent = pad(m);
+      document.getElementById("s").textContent = pad(s);
+    }
+    tick(); setInterval(tick, 1000);
+
+    // Yes button
+    const ans = document.getElementById("answerBox");
+    document.getElementById("yesBtn").addEventListener("click", () => {
+      ans.style.display = "block";
+      ans.innerHTML = "Ỏ 💞 Anh cũng iu bé ❤️❤️❤️";
+      ans.scrollIntoView({behavior:"smooth", block:"center"});
+    });
+
+    // "No" button runs away
+    const noBtn = document.getElementById("noBtn");
+    noBtn.addEventListener("mouseenter", () => {
+      const x = Math.random() * (window.innerWidth - 120);
+      const y = Math.random() * (window.innerHeight - 60);
+      noBtn.style.position = "fixed";
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+
+    // Hearts rain
+    let heartsOn = true;
+    let heartTimer = null;
+
+    function spawnHeart(){
+      const el = document.createElement("div");
+      el.className = "heart";
+      el.style.left = Math.random() * 100 + "vw";
+      const size = 10 + Math.random() * 18;
+      el.style.width = size + "px";
+      el.style.height = size + "px";
+      el.style.animationDuration = (4 + Math.random() * 4) + "s";
+      el.style.opacity = (0.25 + Math.random() * 0.65).toFixed(2);
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 9000);
+    }
+
+    function startHearts(){
+      if (heartTimer) return;
+      heartTimer = setInterval(() => {
+        for (let i = 0; i < 2; i++) spawnHeart();
+      }, 300);
+    }
+    function stopHearts(){
+      clearInterval(heartTimer);
+      heartTimer = null;
+    }
+
+    document.getElementById("toggleHeartsBtn").addEventListener("click", () => {
+      heartsOn = !heartsOn;
+      heartsOn ? startHearts() : stopHearts();
+    });
+
+    startHearts();
+
+    // Load images from manifest.json
+    const gallery = document.querySelector(".gallery");
+    
+    async function loadPicturesFolder() {
+      try {
+        // Fetch manifest.json
+        const response = await fetch("manifest.json");
+        const data = await response.json();
+        
+        // Add images to gallery
+        data.images.forEach((file) => {
+          const img = document.createElement("img");
+          // Nếu là URL, dùng trực tiếp; nếu không, thêm Pictures/
+          img.src = file.startsWith("http") ? file : "Pictures/" + file;
+          img.alt = file;
+          gallery.appendChild(img);
+        });
+      } catch (error) {
+        console.log("Không thể tải ảnh từ manifest.json", error);
+      }
+    }
+    
+    loadPicturesFolder();
+    
+    // Gallery zoom overlay (delegated)
+    gallery.addEventListener("click", (e) => {
+      const img = e.target.closest("img");
+      if (!img) return;
+      
+      const overlay = document.createElement("div");
+      overlay.className = "overlay";
+
+      const bigImg = document.createElement("img");
+      bigImg.src = img.src;
+      bigImg.alt = img.alt;
+
+      const hint = document.createElement("div");
+      hint.className = "hint";
+      hint.textContent = "Bấm vào nền tối để đóng";
+
+      overlay.appendChild(bigImg);
+      overlay.appendChild(hint);
+      document.body.appendChild(overlay);
+
+      overlay.addEventListener("click", () => overlay.remove());
+    });
+  </script>
+</body>
+</html>
